@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+DIR=${DIR:-"./artifacts"}
+
+if [ -z $NO_CHAIN ]; then
+    ./scripts/compile
+fi
+
+terser\
+    --compress \
+    --mangle \
+    --output $DIR/build/index.min.js \
+    $DIR/build/index.js
